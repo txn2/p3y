@@ -3,7 +3,7 @@ build:
   # Path to main.go file.
   # Default is `main.go`
   main: ./p3y.go
-  binary: kubefwd
+  binary: p3y
 
   env:
     - CGO_ENABLED=0
