@@ -12,11 +12,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/prometheus/client_golang/prometheus/promhttp"
-
-	"github.com/prometheus/client_golang/prometheus/promauto"
-
 	"github.com/prometheus/client_golang/prometheus"
+	"github.com/prometheus/client_golang/prometheus/promauto"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/txn2/n2proxy/sec"
 	"go.uber.org/zap"
 )
@@ -70,6 +68,7 @@ func (p *Proxy) handle(w http.ResponseWriter, r *http.Request) {
 	)
 }
 
+// basicAuth
 func (p *Proxy) basicAuth(h http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		if p.Credentials == nil {
@@ -110,6 +109,7 @@ func (p *Proxy) basicAuth(h http.HandlerFunc) http.HandlerFunc {
 	}
 }
 
+// use
 func use(h http.HandlerFunc, middleware ...func(http.HandlerFunc) http.HandlerFunc) http.HandlerFunc {
 	for _, m := range middleware {
 		h = m(h)
@@ -118,6 +118,7 @@ func use(h http.HandlerFunc, middleware ...func(http.HandlerFunc) http.HandlerFu
 	return h
 }
 
+// main entry point
 func main() {
 	backendEnv := getEnv("BACKEND", "http://example.com:80")
 	logoutEnv := getEnv("LOGOUT", "stdout")
