@@ -3,7 +3,7 @@
 *.csr
 *.key
 
-.dist
+dist/
 
 # Binaries for programs and plugins
 *.exe
