@@ -145,6 +145,7 @@ dockers:
     image_templates:
       - "txn2/p3y:latest"
       - "txn2/p3y:{{ .Tag }}"
+      - "txn2/p3y:v{{ .Tag }}"
       - "txn2/p3y:v{{ .Major }}"
       - "txn2/p3y:amd64-{{ .Tag }}"
       - "txn2/p3y:amd64-v{{ .Major }}"
@@ -162,6 +163,7 @@ dockers:
     image_templates:
       - "txn2/p3y:armv6-latest"
       - "txn2/p3y:armv6-{{ .Tag }}"
+      - "txn2/p3y:armv6-v{{ .Tag }}"
       - "txn2/p3y:armv6-v{{ .Major }}"
     build_flag_templates:
       - "--label=org.label-schema.schema-version=1.0"
