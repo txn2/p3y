@@ -141,6 +141,19 @@ spec:
             secretName: prom-proxy-cert
 ```
 
+## Development
+
+### Test Release
+
+```bash
+goreleaser --skip-publish --rm-dist --skip-validate
+```
+
+### Release
+
+```bash
+GITHUB_TOKEN=$GITHUB_TOKEN goreleaser --rm-dist
+```
 
 [homebrew]:https://brew.sh/
 [txn2]:https://txn2.com/
