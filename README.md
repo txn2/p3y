@@ -1,4 +1,4 @@
-![](mast.jpg)
+![](https://raw.githubusercontent.com/txn2/p3y/master/mast.jpg)
 [![](https://images.microbadger.com/badges/image/txn2/p3y.svg)](https://microbadger.com/images/txn2/p3y "p3y")
 
 # p3y: Micro Reverse Proxy
