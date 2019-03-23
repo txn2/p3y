@@ -3,9 +3,12 @@
 
 # p3y: Micro Reverse Proxy
 
-p3y is a small single binary reverse proxy written in go and was developed
-for use in Kubernetes, to wrap services like Prometheus with BasicAuth
-and TSL encryption. p3y exposes its operational metrics on port 2112 by default.
+p3y is a small (3.5M Container) single binary reverse proxy written in go. It was developed
+for use in Kubernetes, to wrap services like Prometheus with simple BasicAuth
+and TSL encryption. p3y exposes its operational metrics on port 2112 by default and tracks
+number of requests, authentication failures and latency.
+
+
 
 ## Quick Docker Example
 
@@ -140,6 +143,50 @@ spec:
           secret:
             secretName: prom-proxy-cert
 ```
+
+## TLS Configuration
+
+If you have specific TLS requirements you can specify them in a configuration file. p3y
+proxy supports TLS 1.0 (VersionTLS10), 1.1 (VersionTLS11) and 1.2 (VersionTLS12).
+
+Example:
+```bash
+-tlsCfg /cfg/tls.yml
+```
+
+`tls.yml`:
+```yaml
+min: VersionTLS12
+max: VersionTLS12
+curvePreferences:
+  - CurveP521
+  - CurveP384
+  - CurveP256
+ciphers:
+  - TLS_RSA_WITH_RC4_128_SHA
+  - TLS_RSA_WITH_3DES_EDE_CBC_SHA
+  - TLS_RSA_WITH_AES_128_CBC_SHA
+  - TLS_RSA_WITH_AES_256_CBC_SHA
+  - TLS_RSA_WITH_AES_128_CBC_SHA256
+  - TLS_RSA_WITH_AES_128_GCM_SHA256
+  - TLS_RSA_WITH_AES_256_GCM_SHA384
+  - TLS_ECDHE_ECDSA_WITH_RC4_128_SHA
+  - TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA
+  - TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA
+  - TLS_ECDHE_RSA_WITH_RC4_128_SHA
+  - TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA
+  - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
+  - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+  - TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+  - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+  - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+  - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+  - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+  - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+  - TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305
+  - TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305
+```
+
 
 ## Development
 
