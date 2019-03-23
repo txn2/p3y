@@ -5,10 +5,8 @@
 
 p3y is a small (3.5M Container) single binary reverse proxy written in go. It was developed
 for use in Kubernetes, to wrap services like Prometheus with simple BasicAuth
-and TSL encryption. p3y exposes its operational metrics on port 2112 by default and tracks
+and TLS encryption. p3y exposes its operational metrics on port 2112 by default and tracks
 number of requests, authentication failures and latency.
-
-
 
 ## Quick Docker Example
 
