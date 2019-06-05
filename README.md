@@ -36,7 +36,7 @@ brew upgrade p3y
 
 ## CLI & ENV Options
 
-**Note:** The environment variables `SKIP_VERIFY` and `TLS` expect values "`true`" or "`false`" if explicity set. 
+**Note:** The environment variables `SKIP_VERIFY` and `TLS` expect values "`true`" or "`false`" if explicitly set. 
 
 | Flag          | Environment Variable | Description                                                  |
 |:--------------|:---------------------|:-------------------------------------------------------------|
