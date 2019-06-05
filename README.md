@@ -34,7 +34,9 @@ brew install txn2/tap/kubefwd
 brew upgrade p3y
 ```
 
-## CLI Options
+## CLI & ENV Options
+
+**Note:** The environment variables `SKIP_VERIFY` and `TLS` expect values "`true`" or "`false`" if explicity set. 
 
 | Flag          | Environment Variable | Description                                                  |
 |:--------------|:---------------------|:-------------------------------------------------------------|
